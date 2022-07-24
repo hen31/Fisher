@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Wave6x.png" type="Texture" id=1]
+[ext_resource path="res://Waves/WaveSprite.cs" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Wave"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 1, 0, 2, 1, 4 ]
+}
+
+[node name="WaveSprite" type="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( 2, 0 )
+hframes = 5
+frame = 3
+script = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Wave"
+anims/Wave = SubResource( 1 )

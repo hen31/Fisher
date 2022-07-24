@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ambiance_Swamp_01.wav-0a8721af40eb19c1bc0a4ab595df7efb.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Ambiance_Swamp_01.wav"
+dest_files=[ "res://.import/Ambiance_Swamp_01.wav-0a8721af40eb19c1bc0a4ab595df7efb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

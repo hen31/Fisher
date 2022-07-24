@@ -1,0 +1,37 @@
+,en,nl
+StartBtn,Start,
+SoundBtnOn,Sound on,Geluid
+SoundBtnOf,Sound off,Dempen
+HighestScoreLbl,Highest score:,Hoogste score:
+HowToPlayTitle,How to play,Speluitleg
+HowToPlayLbl,"Tap the screen to cast rod
+ 
+ Catch the fish to earn points
+ 
+ Avoid the debris otherwise
+ it's game over","Tik op het scherm om 
+ de hengel te werpen
+ 
+ Probeer zoveel mogelijk 
+ vissen te vangen
+ 
+ Vermijd het afval want anders 
+ is het spel over"
+ScoreLbl,Score:,Score:
+ScoreTableLbl,Scoretable,Scoretabel
+PointsLbl, points, punten
+ExitBtn,Exit,Exit
+ToMenuBtn,To menu,Naar hoofdmenu
+MenuBtn,Menu,Menu
+GameOverLbl,Game over,Game over
+RetryBtn,Retry,Probeer opnieuw
+ChallengeBtn,Challenge friend,Vriend uitdagen
+ShareScoreBtn,Share score,Score delen
+NewHighScoreLbl,New highscore!,Nieuwe highscore
+ResumeBtn,Resume,Doorgaan
+ScoreWasLbl,Score was, Eind score
+shareTitle,PixelFishing,PixelFishing
+shareSubject,PixelFishing challenge,PixelFishing challenge
+shareMessage,"I just scored %s. Can you score higher?\nTry here: https://turtlegames.nl/pixelfisherchallenge/?challenge=%s","Ik heb %s punten gehaald. Kun jij een hogere score halen?\nProbeer hier https://turtlegames.nl/pixelfisherchallenge/?challenge=%s"
+shareScore, 'PixelFishing challenge', 'PixelFishing challenge'
+shareScoreMessage,"I accepted the challenge and scored %s.\nGame: https://turtlegames.nl/pixelfisherchallenge/?challenge=%s","Ik ben de uitdaging aangegaan en heb %s punten gehaald.\nGame: https://turtlegames.nl/pixelfisherchallenge/?challenge=%s"

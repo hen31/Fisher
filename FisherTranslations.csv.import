@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://FisherTranslations.en.translation", "res://FisherTranslations.nl.translation" ]
+
+source_file="res://FisherTranslations.csv"
+dest_files=[ "res://FisherTranslations.en.translation", "res://FisherTranslations.nl.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

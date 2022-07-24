@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Pop sounds 1.wav-c3ce5180bc1386a9afb36df72b652b92.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Pop sounds 1.wav"
+dest_files=[ "res://.import/Pop sounds 1.wav-c3ce5180bc1386a9afb36df72b652b92.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

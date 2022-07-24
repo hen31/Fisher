@@ -1,0 +1,300 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Background2x.png" type="Texture" id=1]
+[ext_resource path="res://UITheme.tres" type="Theme" id=2]
+[ext_resource path="res://MainMenu.cs" type="Script" id=3]
+[ext_resource path="res://Assets/CustomAssets/Fish/fish42x.png" type="Texture" id=4]
+[ext_resource path="res://fish32X.png" type="Texture" id=5]
+[ext_resource path="res://FontSmall.tres" type="DynamicFont" id=6]
+[ext_resource path="res://MenuPanel.tres" type="StyleBox" id=7]
+[ext_resource path="res://Waves/WaveSprite.tscn" type="PackedScene" id=8]
+[ext_resource path="res://WaveSpawner.cs" type="Script" id=9]
+[ext_resource path="res://Assets/CustomAssets/Fish/fish72x.png" type="Texture" id=10]
+[ext_resource path="res://Assets/CustomAssets/Fish/fish81z.png" type="Texture" id=11]
+[ext_resource path="res://Assets/CustomAssets/Fish/fish6.png" type="Texture" id=12]
+[ext_resource path="res://Assets/CustomAssets/Fish/fish52x.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Audio/Casual - Main Theme (Loop).wav" type="AudioStream" id=14]
+[ext_resource path="res://IntentParamterGetter.gd" type="Script" id=15]
+[ext_resource path="res://UrlNode.cs" type="Script" id=16]
+[ext_resource path="res://TranslatableButton.gd" type="Script" id=17]
+[ext_resource path="res://TranslatableLabel.gd" type="Script" id=18]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 15 )
+
+[node name="UrlNode" type="Node" parent="."]
+script = ExtResource( 16 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Background1" type="Sprite" parent="Background"]
+position = Vector2( 640, 360 )
+z_index = -4096
+texture = ExtResource( 1 )
+
+[node name="Background2" type="Sprite" parent="Background"]
+position = Vector2( 1920, 360 )
+z_index = -4096
+texture = ExtResource( 1 )
+
+[node name="WaveSpawner" type="Node2D" parent="Background"]
+pause_mode = 1
+position = Vector2( 2.11896, 165.147 )
+script = ExtResource( 9 )
+WaveDepth = 1
+WaveScene = ExtResource( 8 )
+WaveWidth = 96.0
+PlaySpeed = 0.6
+WaveLayerXOffset = -48.0
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 279.268
+margin_top = -356.287
+margin_right = 319.268
+margin_bottom = -316.287
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fish72x" type="Sprite" parent="MainMenu/Control"]
+position = Vector2( 105.089, 485.785 )
+texture = ExtResource( 10 )
+
+[node name="fish32X" type="Sprite" parent="MainMenu/Control"]
+position = Vector2( 78.6836, 301.103 )
+texture = ExtResource( 5 )
+
+[node name="fish6" type="Sprite" parent="MainMenu/Control"]
+position = Vector2( 73.6544, 225.02 )
+texture = ExtResource( 12 )
+
+[node name="fish81z" type="Sprite" parent="MainMenu/Control"]
+position = Vector2( 70.2953, 241.163 )
+texture = ExtResource( 11 )
+
+[node name="fish42x2" type="Sprite" parent="MainMenu/Control"]
+position = Vector2( 89.4076, 369.055 )
+texture = ExtResource( 4 )
+
+[node name="fish52x2" type="Sprite" parent="MainMenu/Control"]
+position = Vector2( 95.5228, 426.498 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="MainMenu/Control"]
+margin_left = 129.815
+margin_top = 204.878
+margin_right = 573.815
+margin_bottom = 286.878
+custom_fonts/font = ExtResource( 6 )
+text = "4 Points"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "PointsLbl"
+Prefix = "4"
+
+[node name="Label4" type="Label" parent="MainMenu/Control"]
+margin_left = 129.0
+margin_top = 273.533
+margin_right = 575.006
+margin_bottom = 355.533
+custom_fonts/font = ExtResource( 6 )
+text = "8 Points"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "PointsLbl"
+Prefix = "8"
+
+[node name="Label5" type="Label" parent="MainMenu/Control"]
+margin_left = 129.0
+margin_top = 339.036
+margin_right = 576.99
+margin_bottom = 421.036
+custom_fonts/font = ExtResource( 6 )
+text = "12 Points"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "PointsLbl"
+Prefix = "12"
+
+[node name="Label6" type="Label" parent="MainMenu/Control"]
+margin_left = 129.0
+margin_top = 397.084
+margin_right = 580.474
+margin_bottom = 479.084
+custom_fonts/font = ExtResource( 6 )
+text = "16 Points"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "PointsLbl"
+Prefix = "16"
+
+[node name="Label7" type="Label" parent="MainMenu/Control"]
+margin_left = 129.0
+margin_top = 457.665
+margin_right = 582.256
+margin_bottom = 539.665
+custom_fonts/font = ExtResource( 6 )
+text = "25 Points"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "PointsLbl"
+Prefix = "25"
+
+[node name="MainMenuContainer" type="PanelContainer" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -136.392
+margin_top = -233.911
+margin_right = 235.608
+margin_bottom = 128.089
+size_flags_vertical = 2
+theme = ExtResource( 2 )
+custom_styles/panel = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainMenu" type="VBoxContainer" parent="MainMenu/MainMenuContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 340.0
+margin_bottom = 346.0
+custom_constants/separation = 25
+
+[node name="StartButton" type="Button" parent="MainMenu/MainMenuContainer/MainMenu"]
+margin_right = 308.0
+margin_bottom = 88.0
+text = "Start"
+script = ExtResource( 17 )
+KeyName = "StartBtn"
+
+[node name="SoundButton" type="Button" parent="MainMenu/MainMenuContainer/MainMenu"]
+margin_top = 113.0
+margin_right = 308.0
+margin_bottom = 201.0
+text = "Sound on"
+
+[node name="ExitButton" type="Button" parent="MainMenu/MainMenuContainer/MainMenu"]
+margin_top = 226.0
+margin_right = 308.0
+margin_bottom = 314.0
+text = "Exit"
+script = ExtResource( 17 )
+KeyName = "ExitBtn"
+
+[node name="Label2" type="Label" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -628.679
+margin_top = -267.208
+margin_right = -184.677
+margin_bottom = -185.208
+rect_pivot_offset = Vector2( 325.033, 72.3548 )
+theme = ExtResource( 2 )
+text = "How to play"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "HowToPlayTitle"
+
+[node name="Label4" type="Label" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 283.671
+margin_top = -257.117
+margin_right = 727.673
+margin_bottom = -175.117
+rect_pivot_offset = Vector2( 325.033, 72.3548 )
+theme = ExtResource( 2 )
+text = "Scoretable"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "ScoreTableLbl"
+
+[node name="Label5" type="Label" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -131.491
+margin_top = -344.0
+margin_right = 312.511
+margin_bottom = -262.0
+rect_pivot_offset = Vector2( 325.033, 72.3548 )
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.682353, 0.137255, 0.203922, 1 )
+text = "PixelFishing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLbl" type="Label" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -498.667
+margin_top = 234.561
+margin_right = -54.667
+margin_bottom = 316.561
+rect_pivot_offset = Vector2( 240.519, 360.063 )
+theme = ExtResource( 2 )
+text = "Highest score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="MainMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -625.504
+margin_top = -182.282
+margin_right = -181.504
+margin_bottom = 126.718
+rect_pivot_offset = Vector2( 240.519, 360.063 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 6 )
+text = "Tap the screen to cast rod
+
+Catch the fish to earn points
+
+Avoid the debris  otherwise
+it's game over"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+KeyName = "HowToPlayLbl"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -15.0
+autoplay = true

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Lose sound 22.wav-fcb2d530e22591b58726bca4cdd1a1db.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Lose sound 22.wav"
+dest_files=[ "res://.import/Lose sound 22.wav-fcb2d530e22591b58726bca4cdd1a1db.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

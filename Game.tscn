@@ -1,0 +1,216 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://FishSpawnArea.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Person3.png" type="Texture" id=2]
+[ext_resource path="res://boat33X.png" type="Texture" id=3]
+[ext_resource path="res://Background2x.png" type="Texture" id=4]
+[ext_resource path="res://Waves/WaveSprite.tscn" type="PackedScene" id=5]
+[ext_resource path="res://WaveSpawner.cs" type="Script" id=6]
+[ext_resource path="res://FishingLine.cs" type="Script" id=7]
+[ext_resource path="res://Player.cs" type="Script" id=8]
+[ext_resource path="res://hook2x.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Audio/Ambiance_Swamp_01.wav" type="AudioStream" id=10]
+[ext_resource path="res://RandomGenerator.cs" type="Script" id=11]
+[ext_resource path="res://PanelStyle.tres" type="StyleBox" id=12]
+[ext_resource path="res://FontSmall.tres" type="DynamicFont" id=16]
+[ext_resource path="res://UITheme.tres" type="Theme" id=17]
+[ext_resource path="res://MenuPanel.tres" type="StyleBox" id=18]
+[ext_resource path="res://MenuButton.cs" type="Script" id=19]
+[ext_resource path="res://InGameMenu.cs" type="Script" id=20]
+[ext_resource path="res://Assets/Audio/Pop sounds 1.wav" type="AudioStream" id=21]
+[ext_resource path="res://Assets/Audio/Lose sound 22.wav" type="AudioStream" id=22]
+[ext_resource path="res://UrlNode.cs" type="Script" id=23]
+[ext_resource path="res://IntentParamterGetter.gd" type="Script" id=24]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "LeaveAnimation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 618.562, 146.983 ), Vector2( -100, 146.983 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 1746.55, 71.5461 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 24 )
+checkAtStart = false
+
+[node name="UrlNode" type="Node" parent="."]
+script = ExtResource( 23 )
+
+[node name="Game" type="Node2D" parent="."]
+
+[node name="SpawnDespawnArea2" parent="Game" instance=ExtResource( 1 )]
+position = Vector2( 1894.01, -85.8114 )
+Direction = Vector2( -1, 0 )
+FlipFish = true
+RandomNumberGenerator = NodePath("../../RandomGenerator")
+
+[node name="SpawnDespawnArea3" parent="Game" instance=ExtResource( 1 )]
+position = Vector2( 14.8661, -110.843 )
+RandomNumberGenerator = NodePath("../../RandomGenerator")
+
+[node name="Background1" type="Sprite" parent="Game"]
+position = Vector2( 640, 360 )
+z_index = -4096
+texture = ExtResource( 4 )
+
+[node name="Background2" type="Sprite" parent="Game"]
+position = Vector2( 1920, 360 )
+z_index = -4096
+texture = ExtResource( 4 )
+
+[node name="Player" type="Sprite" parent="Game"]
+position = Vector2( 618.562, 146.983 )
+texture = ExtResource( 3 )
+script = ExtResource( 8 )
+ScoreLabelPath = NodePath("../../UILayer/ScoreLabel")
+
+[node name="SplashSoundEffectPlayer" type="AudioStreamPlayer" parent="Game/Player"]
+stream = ExtResource( 21 )
+
+[node name="LoseSoundEffectPlayer" type="AudioStreamPlayer" parent="Game/Player"]
+stream = ExtResource( 22 )
+
+[node name="Person3" type="Sprite" parent="Game/Player"]
+position = Vector2( -1.15668, -80.8127 )
+texture = ExtResource( 2 )
+
+[node name="FishingLine" type="Line2D" parent="Game/Player/Person3"]
+position = Vector2( 84.7623, -49.3891 )
+z_index = 50
+z_as_relative = false
+width = 3.0
+default_color = Color( 1, 0.305882, 0.305882, 1 )
+script = ExtResource( 7 )
+PlayerPath = NodePath("../..")
+minAngle = -70.0
+maxAngle = 70.0
+speedOfSwing = 25.0
+maxLenghtOfLine = 1250.0
+defaultLenghtOfLine = 125.0
+throwSpeed = 500.0
+retractSpeed = 600.0
+
+[node name="hook" type="Sprite" parent="Game/Player/Person3/FishingLine"]
+position = Vector2( 157.463, 170.113 )
+texture = ExtResource( 9 )
+
+[node name="HookArea" type="Area2D" parent="Game/Player/Person3/FishingLine/hook"]
+
+[node name="HookCollisionShape" type="CollisionShape2D" parent="Game/Player/Person3/FishingLine/hook/HookArea"]
+position = Vector2( -1.00116, 7.17476 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game/Player"]
+anims/LeaveAnimation = SubResource( 2 )
+
+[node name="WaveSpawner" type="Node2D" parent="Game"]
+position = Vector2( 2.11896, 165.147 )
+script = ExtResource( 6 )
+WaveDepth = 1
+WaveScene = ExtResource( 5 )
+WaveWidth = 96.0
+PlaySpeed = 0.6
+WaveLayerXOffset = -48.0
+
+[node name="Area2D" type="Area2D" parent="Game"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/Area2D"]
+position = Vector2( 838.05, 828.429 )
+shape = SubResource( 3 )
+
+[node name="RandomGenerator" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="UILayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -348.15
+margin_top = 14.0722
+margin_right = -6.15002
+margin_bottom = 96.0722
+custom_fonts/font = ExtResource( 16 )
+text = "Score:9999"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuButton" type="Button" parent="UILayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -146.789
+margin_top = 24.4033
+margin_right = -20.7886
+margin_bottom = 92.4033
+theme = ExtResource( 17 )
+custom_styles/normal = ExtResource( 12 )
+custom_fonts/font = ExtResource( 16 )
+text = "Menu"
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+MenuNodePath = NodePath("../InGameMenu")
+
+[node name="InGameMenu" type="PanelContainer" parent="UILayer"]
+pause_mode = 2
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -328.5
+margin_top = -228.0
+margin_right = 328.5
+margin_bottom = 228.0
+theme = ExtResource( 17 )
+custom_styles/panel = ExtResource( 18 )
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UILayer/InGameMenu"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 625.0
+margin_bottom = 440.0
+custom_constants/separation = 25
+
+[node name="ResumeButton" type="Button" parent="UILayer/InGameMenu/VBoxContainer"]
+margin_right = 593.0
+margin_bottom = 88.0
+text = "Resume"
+
+[node name="SoundButton" type="Button" parent="UILayer/InGameMenu/VBoxContainer"]
+margin_top = 113.0
+margin_right = 593.0
+margin_bottom = 201.0
+text = "Sound on"
+
+[node name="ExitButton" type="Button" parent="UILayer/InGameMenu/VBoxContainer"]
+margin_top = 226.0
+margin_right = 593.0
+margin_bottom = 314.0
+text = "To menu"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 10 )
+autoplay = true

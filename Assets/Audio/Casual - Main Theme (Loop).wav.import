@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Casual - Main Theme (Loop).wav-78f403051e529dea70d4037878040091.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Casual - Main Theme (Loop).wav"
+dest_files=[ "res://.import/Casual - Main Theme (Loop).wav-78f403051e529dea70d4037878040091.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=true
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

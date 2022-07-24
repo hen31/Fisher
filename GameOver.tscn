@@ -1,0 +1,154 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://GameOverScreen.cs" type="Script" id=1]
+[ext_resource path="res://Font.tres" type="DynamicFont" id=2]
+[ext_resource path="res://MenuPanel.tres" type="StyleBox" id=3]
+[ext_resource path="res://Background2x.png" type="Texture" id=4]
+[ext_resource path="res://UITheme.tres" type="Theme" id=5]
+[ext_resource path="res://Waves/WaveSprite.tscn" type="PackedScene" id=6]
+[ext_resource path="res://WaveSpawner.cs" type="Script" id=7]
+[ext_resource path="res://Assets/Audio/Casual - Main Theme (Loop).wav" type="AudioStream" id=8]
+[ext_resource path="res://ChallengeButton.gd" type="Script" id=9]
+[ext_resource path="res://UrlNode.cs" type="Script" id=10]
+[ext_resource path="res://IntentParamterGetter.gd" type="Script" id=11]
+[ext_resource path="res://TranslatableLabel.gd" type="Script" id=12]
+[ext_resource path="res://TranslatableButton.gd" type="Script" id=13]
+[ext_resource path="res://ShareScoreBtn.gd" type="Script" id=14]
+[ext_resource path="res://Assets/Audio/Win sound 25.wav" type="AudioStream" id=15]
+[ext_resource path="res://AdStarter.gd" type="Script" id=16]
+[ext_resource path="res://admob-lib/admob.gd" type="Script" id=17]
+
+[node name="GameOverScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource( 11 )
+checkAtStart = false
+
+[node name="UrlNode" type="Node" parent="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Background" type="Node2D" parent="Node2D"]
+
+[node name="Background1" type="Sprite" parent="Node2D/Background"]
+position = Vector2( 640, 360 )
+z_index = -4096
+texture = ExtResource( 4 )
+
+[node name="Background2" type="Sprite" parent="Node2D/Background"]
+position = Vector2( 1920, 360 )
+z_index = -4096
+texture = ExtResource( 4 )
+
+[node name="WaveSpawner" type="Node2D" parent="Node2D/Background"]
+pause_mode = 1
+position = Vector2( 2.11896, 165.147 )
+script = ExtResource( 7 )
+WaveDepth = 1
+WaveScene = ExtResource( 6 )
+WaveWidth = 96.0
+PlaySpeed = 0.6
+WaveLayerXOffset = -48.0
+
+[node name="EndScreen" type="CanvasLayer" parent="Node2D"]
+
+[node name="EndContainer" type="PanelContainer" parent="Node2D/EndScreen"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -284.0
+margin_top = 14.0
+margin_right = 284.0
+margin_bottom = 439.0
+size_flags_vertical = 2
+theme = ExtResource( 5 )
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Node2D/EndScreen/EndContainer"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 536.0
+margin_bottom = 417.0
+custom_constants/separation = 15
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HighScoreLbl" type="Label" parent="Node2D/EndScreen/EndContainer/VBoxContainer"]
+visible = false
+margin_right = 530.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.219608, 1, 0, 1 )
+text = "New highscore!"
+align = 1
+script = ExtResource( 12 )
+KeyName = "NewHighScoreLbl"
+
+[node name="Label2" type="Label" parent="Node2D/EndScreen/EndContainer/VBoxContainer"]
+margin_right = 504.0
+margin_bottom = 82.0
+custom_fonts/font = ExtResource( 2 )
+text = "Game over"
+align = 1
+script = ExtResource( 12 )
+KeyName = "GameOverLbl"
+
+[node name="ScoreLabel" type="Label" parent="Node2D/EndScreen/EndContainer/VBoxContainer"]
+margin_top = 97.0
+margin_right = 504.0
+margin_bottom = 179.0
+custom_fonts/font = ExtResource( 2 )
+text = "Game over"
+align = 1
+
+[node name="RetryButton" type="Button" parent="Node2D/EndScreen/EndContainer/VBoxContainer"]
+margin_top = 194.0
+margin_right = 504.0
+margin_bottom = 282.0
+text = "Retry"
+script = ExtResource( 13 )
+KeyName = "RetryBtn"
+
+[node name="ChallengeButton" type="Button" parent="Node2D/EndScreen/EndContainer/VBoxContainer"]
+margin_top = 297.0
+margin_right = 504.0
+margin_bottom = 385.0
+text = "Challenge friend"
+script = ExtResource( 9 )
+
+[node name="ShareScoreBtn" type="Button" parent="Node2D/EndScreen/EndContainer/VBoxContainer"]
+visible = false
+margin_top = 452.0
+margin_right = 530.0
+margin_bottom = 566.0
+text = "Challenge friend"
+script = ExtResource( 14 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -15.0
+autoplay = true
+
+[node name="WinAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="AdMob" type="Node" parent="."]
+script = ExtResource( 17 )
+banner_on_top = false
+banner_size = "BANNER"
+banner_id = "ca-app-pub-2777126736623333/3988084969"
+interstitial_id = "ca-app-pub-2777126736623333/2092549364"
+
+[node name="AdStarter" type="Node" parent="."]
+script = ExtResource( 16 )
+[connection signal="pressed" from="Node2D/EndScreen/EndContainer/VBoxContainer/ChallengeButton" to="Node2D/EndScreen/EndContainer/VBoxContainer/ChallengeButton" method="_on_ChallengeButton_pressed"]
+[connection signal="pressed" from="Node2D/EndScreen/EndContainer/VBoxContainer/ShareScoreBtn" to="Node2D/EndScreen/EndContainer/VBoxContainer/ShareScoreBtn" method="_on_ShareScoreBtn_pressed"]
+[connection signal="interstitial_loaded" from="AdMob" to="AdStarter" method="_on_AdMob_interstitial_loaded"]

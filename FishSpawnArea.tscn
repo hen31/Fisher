@@ -1,0 +1,32 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://SpawnDespawnArea.cs" type="Script" id=1]
+[ext_resource path="res://AI/Fishes/Fish2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://AI/Obstacle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://AI/Fishes/Fish4.tscn" type="PackedScene" id=4]
+[ext_resource path="res://AI/Fishes/Fish5.tscn" type="PackedScene" id=5]
+[ext_resource path="res://AI/Fishes/Fish6.tscn" type="PackedScene" id=6]
+[ext_resource path="res://AI/Fishes/Fish7.tscn" type="PackedScene" id=7]
+[ext_resource path="res://AI/Fishes/Fish8.tscn" type="PackedScene" id=8]
+[ext_resource path="res://AI/Brick.tscn" type="PackedScene" id=9]
+[ext_resource path="res://AI/Bottle.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80.817, 220.103 )
+
+[node name="SpawnDespawnArea" type="Area2D"]
+position = Vector2( -48, 102 )
+script = ExtResource( 1 )
+MaxLevel = 18
+SpawnableFishes = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ]
+SpawnableObstacles = [ ExtResource( 3 ), ExtResource( 9 ), ExtResource( 10 ) ]
+Direction = Vector2( 1, 0 )
+LevelTime = 0.5
+
+[node name="Area" type="CollisionShape2D" parent="."]
+position = Vector2( -115.817, 537.103 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
